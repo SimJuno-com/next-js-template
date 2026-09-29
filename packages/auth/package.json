@@ -1,0 +1,27 @@
+{
+  "name": "@next-js-template/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {
+    "generate": "bunx auth@1.7.1 generate --config src/config/auth-cli.ts --output ../db/src/schema/auth.ts --adapter drizzle --dialect postgresql --yes"
+  },
+  "dependencies": {
+    "@next-js-template/db": "workspace:*",
+    "@next-js-template/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@next-js-template/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@next-js-template/ui/components",
+    "utils": "@next-js-template/ui/lib/utils",
+    "hooks": "@next-js-template/ui/hooks",
+    "lib": "@next-js-template/ui/lib",
+    "ui": "@next-js-template/ui/components"
+  },
+  "menuColor": "default",
+  "menuAccent": "subtle",
+  "registries": {},
+  "rtl": false
+}

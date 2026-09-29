@@ -1,0 +1,70 @@
+{
+  "name": "next-js-template",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalog": {
+      "dotenv": "^17.4.2",
+      "zod": "^4.4.3",
+      "typescript": "^6.0.3",
+      "@types/node": "^26.2.0",
+      "lucide-react": "^1.27.0",
+      "next-themes": "^0.4.6",
+      "react": "^19.2.8",
+      "react-dom": "^19.2.8",
+      "sonner": "^2.0.7",
+      "better-auth": "1.7.1",
+      "@tailwindcss/postcss": "^4.3.3",
+      "@types/react": "^19.2.17",
+      "@types/react-dom": "^19.2.3",
+      "tailwindcss": "^4.3.3",
+      "@orpc/server": "^1.15.0",
+      "@orpc/client": "^1.15.0",
+      "@orpc/openapi": "^1.15.0",
+      "@orpc/zod": "^1.15.0",
+      "@orpc/contract": "^1.15.0"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "check-types": "turbo run check-types",
+    "dev:web": "turbo run dev -F web --",
+    "auth:generate": "bun run --cwd packages/auth generate",
+    "db:push": "turbo run db:push -F @next-js-template/db --",
+    "db:studio": "turbo run db:studio -F @next-js-template/db --",
+    "db:generate": "turbo run db:generate -F @next-js-template/db --",
+    "db:migrate": "turbo run db:migrate -F @next-js-template/db --",
+    "db:start": "docker compose up -d postgres",
+    "db:watch": "docker compose up postgres",
+    "db:stop": "docker compose stop postgres",
+    "db:down": "docker compose down postgres",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "check": "oxlint && oxfmt --write",
+    "deploy": "bunx vercel deploy --prod",
+    "deploy:preview": "bunx vercel deploy"
+  },
+  "dependencies": {
+    "@next-js-template/env": "workspace:*",
+    "cn": "^0.2.5",
+    "dotenv": "catalog:",
+    "motion": "^13.2.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@next-js-template/config": "workspace:*",
+    "@types/node": "catalog:",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
+    "turbo": "^2.10.12",
+    "typescript": "catalog:"
+  },
+  "packageManager": "bun@1.3.14"
+}

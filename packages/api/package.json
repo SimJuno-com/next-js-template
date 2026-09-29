@@ -1,0 +1,40 @@
+{
+  "name": "@next-js-template/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    },
+    "./types": {
+      "types": "./src/types/index.ts"
+    },
+    "./contract": {
+      "default": "./src/contract/index.ts"
+    }
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@next-js-template/auth": "workspace:*",
+    "@next-js-template/db": "workspace:*",
+    "@next-js-template/env": "workspace:*",
+    "@orpc/client": "catalog:",
+    "@orpc/contract": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.2",
+    "simjuno": "^0.0.4",
+    "stripe": "^22.6.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@next-js-template/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
