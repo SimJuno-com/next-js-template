@@ -2,12 +2,15 @@ FROM node:24-slim AS builder
 COPY --from=oven/bun:1 /usr/local/bin/bun /usr/local/bin/bun
 WORKDIR /app
 ENV SKIP_ENV_VALIDATION=1
-# the build evaluates the auth config; the real secret comes from compose at runtime
+# the build evaluates the auth config; the real values come from compose at runtime
 ENV BETTER_AUTH_SECRET=build-time-placeholder-secret-not-used-at-runtime
+ENV BETTER_AUTH_URL=http://localhost:3000
 
 COPY . .
 RUN --mount=type=cache,target=/root/.bun/install/cache bun install
 
+ARG NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+ARG NEXT_PUBLIC_TKIT_WIDGET_ID
 ENV NODE_ENV=production
 RUN cd apps/web && bun run build
 # standalone output excludes public/; ensure it exists so the runner copy never fails

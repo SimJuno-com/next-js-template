@@ -25,7 +25,7 @@ export function createQueryClient() {
 export const queryClient = createQueryClient();
 
 export const link = new RPCLink({
-  url: `${typeof window !== "undefined" ? window.location.origin : process.env.BETTER_AUTH_URL || "http://localhost:3000"}/api/rpc`,
+  url: `${typeof window !== "undefined" ? window.location.origin : process.env.VERCEL ? process.env.BETTER_AUTH_URL : `http://localhost:${process.env.PORT || 3000}`}/api/rpc`,
   fetch(url, options) {
     return fetch(url, {
       ...options,

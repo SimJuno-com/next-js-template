@@ -5,15 +5,18 @@ services:
     build:
       context: .
       dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
+        NEXT_PUBLIC_TKIT_WIDGET_ID: ${NEXT_PUBLIC_TKIT_WIDGET_ID:-}
     init: true
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3002:3000"
     env_file:
       - path: apps/web/.env
         required: false
     environment:
-      BETTER_AUTH_URL: http://localhost:3000
-      CORS_ORIGIN: http://localhost:3000
+      BETTER_AUTH_URL: ${APP_URL:-http://localhost:3002}
+      CORS_ORIGIN: ${APP_URL:-http://localhost:3002}
       DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-password}@postgres:5432/next-js-template
     depends_on:
       postgres:
@@ -40,7 +43,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5433:5432"
     volumes:
       - next-js-template_postgres_data:/var/lib/postgresql
     healthcheck:
