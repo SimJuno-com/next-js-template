@@ -10,7 +10,6 @@ COPY . .
 RUN --mount=type=cache,target=/root/.bun/install/cache bun install
 
 ARG NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-ARG NEXT_PUBLIC_TKIT_WIDGET_ID
 ENV NODE_ENV=production
 RUN cd apps/web && bun run build
 # standalone output excludes public/; ensure it exists so the runner copy never fails

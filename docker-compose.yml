@@ -7,7 +7,6 @@ services:
       dockerfile: apps/web/Dockerfile
       args:
         NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
-        NEXT_PUBLIC_TKIT_WIDGET_ID: ${NEXT_PUBLIC_TKIT_WIDGET_ID:-}
     init: true
     ports:
       - "127.0.0.1:3002:3000"
